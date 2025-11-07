@@ -1,11 +1,153 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeatureCard from '../components/FeatureCard.astro'; // Crearemos este en el paso 4
+import GalleryGrid from '../components/GalleryGrid.astro'; // Crearemos este en el paso 4
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageTitle = "Senderos Amados - Tu Refugio de Paz en Boquete";
+const pageDescription = "Relájate en una espectacular propiedad de casi una hectárea en el corazón de Boquete, a 3 minutos del Parque Central. ¡Reserva tu escapada mágica!";
+
+// Datos de ejemplo para las tarjetas de características (puedes cambiarlos)
+const features = [
+  { 
+    title: "Propiedad de 9900 m²", 
+    description: "Casi una hectárea de terreno para que la familia corra libre y explore.",
+    icon: '🌳' 
+  },
+  { 
+    title: "A 3 min del Centro", 
+    description: "Ubicación ideal: paz rural, pero a pasos del vibrante Parque Central de Boquete.",
+    icon: '📍' 
+  },
+  { 
+    title: "Jardín Extenso", 
+    description: "Rincones de relajación para leer, practicar yoga o simplemente respirar el aire fresco.",
+    icon: '🧘' 
+  },
+  { 
+    title: "Ambiente de Finca", 
+    description: "Una experiencia auténtica, con gallinas paseando libremente, ideal para los pequeños.",
+    icon: '🐔' 
+  }
+];
+
+// URLs de placeholder para las imágenes
+const mainImagePlaceholder = '/images/boquete-main-placeholder.jpg';
+const galleryPlaceholders = [
+  '/images/gallery-1.jpg',
+  '/images/gallery-2.jpg',
+  '/images/gallery-3.jpg',
+  '/images/gallery-4.jpg',
+  '/images/gallery-5.jpg',
+  '/images/gallery-6.jpg',
+];
+
+// Puedes copiar las imágenes de placeholder a la carpeta public/images para que funcionen,
+// o simplemente reemplazarlas con tus propias fotos.
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title={pageTitle} description={pageDescription}>
+  
+  <section class="relative h-[60vh] flex items-center justify-center text-white overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${mainImagePlaceholder}'); background-color: #333;`}>
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+    </div>
+    
+    <div class="relative z-10 text-center px-4">
+      <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight shadow-text">
+        Senderos Amados
+      </h1>
+      <p class="text-xl md:text-2xl font-light italic">
+        Tu Refugio de Paz en Boquete
+      </p>
+      <a href="#contacto" class="mt-8 inline-block bg-yellow-400 text-green-900 hover:bg-yellow-300 px-8 py-3 rounded-full text-lg font-bold transition duration-300 transform hover:scale-105 shadow-xl">
+        ¡Reserva tu Escapada Mágica!
+      </a>
+    </div>
+  </section>
+
+  <section id="acerca" class="py-16 px-4 sm:px-6 lg:px-8"> 
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-extrabold text-green-800 mb-6">
+        Escapada Mágica en Senderos Amados
+      </h2>
+      <p class="text-lg text-gray-600 mb-4">
+        ¡Bienvenido a Senderos Amados, el lugar donde la naturaleza te invita a detener el tiempo! Imagina despertar con el suave canto de los pájaros y el aroma fresco de las montañas, enclavado en el corazón del pintoresco Boquete, pero en un santuario de paz que te hará olvidar el bullicio. Este no es solo un alojamiento, es una experiencia de inmersión total en la serenidad.
+      </p>
+      <p class="text-xl font-semibold text-green-700">
+        Te espera una propiedad espectacular de casi una hectárea ($9,900 m²$) donde la tranquilidad no solo se respira, ¡se vive!
+      </p>
+    </div>
+  </section>
+
+  <section id="servicios" class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-100"> 
+    <div class="max-w-6xl mx-auto text-center">
+      <h3 class="text-3xl font-bold text-green-800 mb-10">
+        Nuestras Comodidades Clave y Ventajas
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {features.map((feature) => (
+          <FeatureCard title={feature.title} description={feature.description} icon={feature.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="space-y-4">
+        <h3 class="text-3xl font-bold text-green-700">Un Jardín sin Límites para tu Desconexión</h3>
+        <p class="text-gray-600">
+          La joya de la corona es nuestro inmenso y cuidado jardín de **9,900 m²**. Olvídate de los espacios reducidos; aquí, los niños pueden correr libres, puedes practicar yoga bajo el rocío de la mañana o simplemente caminar y respirar el clima fresco y revitalizante de Boquete.
+        </p>
+        <p class="text-gray-600 font-medium italic">
+          Encontrarás muchos lugares estratégicamente ubicados para sentarte, leer un libro, tomar un café o simplemente contemplar el paisaje montañoso.
+        </p>
+      </div>
+      <div class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden">
+        <img src="/images/jardin-placeholder.jpg" alt="Jardín de Senderos Amados en Boquete" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden order-last md:order-first">
+        <img src="/images/boquete-town-placeholder.jpg" alt="Boquete Centro cerca de la Finca" class="w-full h-full object-cover" />
+      </div>
+      <div class="space-y-4 order-first md:order-last">
+        <h3 class="text-3xl font-bold text-green-700">Ubicación Insuperable y Comodidad Total</h3>
+        <p class="text-gray-600">
+          Lo increíble de esta finca es su perfecta dualidad: te sentirás en un retiro rural, pero estás a solo **3 minutos caminando** del vibrante Parque Central de Boquete.
+        </p>
+        <ul class="list-disc list-inside text-gray-600 font-medium">
+          <li>Disfruta de la gastronomía y el ambiente festivo cuando quieras.</li>
+          <li>Regresa a la calma en un instante.</li>
+          <li>Contamos con **amplio estacionamiento** dentro de la propiedad, garantizando la seguridad de tu vehículo.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <section id="galeria" class="py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-extrabold text-center text-green-800 mb-12">
+        Galería de Senderos Amados
+      </h2>
+      <GalleryGrid images={galleryPlaceholders} />
+    </div>
+  </section>
+
+  <section class="bg-green-700 text-white py-12 text-center">
+    <h3 class="text-3xl md:text-4xl font-bold mb-4">
+      ¡Tu aventura de tranquilidad te espera!
+    </h3>
+    <p class="text-xl mb-8">
+      Ven a recargar energías, a disfrutar de la belleza escénica de Boquete y a vivir la magia de un lugar diseñado para tu paz.
+    </p>
+    <a href="#contacto" class="inline-block bg-yellow-400 text-green-900 hover:bg-yellow-300 px-10 py-4 rounded-full text-xl font-bold transition duration-300 transform hover:scale-105 shadow-2xl">
+      Consultar Disponibilidad
+    </a>
+  </section>
+
+</BaseLayout>
