@@ -3,6 +3,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureCard from '../components/FeatureCard.astro'; // Crearemos este en el paso 4
 import GalleryGrid from '../components/GalleryGrid.astro'; // Crearemos este en el paso 4
+import Ubicacion from '../assets/Ubicacion.jpeg';
+import CasaPrincipal from '../assets/galeria/CasaPrincipal.png';
+import Apartamentos from '../assets/galeria/Apartamentos.png';
+import Piscina from '../assets/galeria/Piscina.png';
 
 const pageTitle = "Senderos Amados - Tu Refugio de Paz en Boquete";
 const pageDescription = "Relájate en una espectacular propiedad de casi una hectárea en el corazón de Boquete, a 3 minutos del Parque Central. ¡Reserva tu escapada mágica!";
@@ -124,13 +128,136 @@ const galleryPlaceholders = Object.values(galleryImports).map((img) => img) as {
       </div>
     </div>
   </section>
-  
+
+  <!-- Sección Casa Principal -->
+  <section class="py-16 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="space-y-4">
+        <h3 class="text-3xl font-bold text-green-700">Casa Principal</h3>
+        <p class="text-gray-600">
+          La casa principal es el corazón de Senderos Amados, diseñada con arquitectura tradicional boqueteña y comodidades modernas. 
+          Con amplios espacios sociales, cocina totalmente equipada y vistas espectaculares al jardín.
+        </p>
+        <ul class="list-disc list-inside text-gray-600 font-medium">
+          <li>3 habitaciones cómodas con vistas al jardín</li>
+          <li>Sala de estar con chimenea</li>
+          <li>Cocina gourmet con isla central</li>
+          <li>Terraza cubierta ideal para disfrutar del café matutino</li>
+        </ul>
+      </div>
+      <div class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden">
+        <img src={CasaPrincipal.src} alt="Casa Principal de Senderos Amados" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Apartamentos/Casas de Alquiler -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden order-last md:order-first">
+        <img src={Apartamentos.src} alt="Apartamentos de Senderos Amados" class="w-full h-full object-cover" />
+      </div>
+      <div class="space-y-4 order-first md:order-last">
+        <h3 class="text-3xl font-bold text-green-700">Apartamentos Independientes</h3>
+        <p class="text-gray-600">
+          Contamos con apartamentos totalmente independientes que ofrecen privacidad y comodidad. 
+          Cada uno está amueblado y equipado para una estancia prolongada con todas las comodidades.
+        </p>
+        <ul class="list-disc list-inside text-gray-600 font-medium">
+          <li>2 apartamentos de 1 habitación</li>
+          <li>Cocina completa y área de lavado</li>
+          <li>Entrada independiente y estacionamiento privado</li>
+          <li>Wifi de alta velocidad y zona de trabajo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Piscina -->
+  <section class="py-16 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="space-y-4">
+        <h3 class="text-3xl font-bold text-green-700">Piscina y Zonas Húmedas</h3>
+        <p class="text-gray-600">
+          Nuestra piscina es el lugar perfecto para relajarse después de un día de exploración. 
+          Diseñada para disfrutar del clima privilegiado de Boquete con áreas de sol y sombra.
+        </p>
+        <ul class="list-disc list-inside text-gray-600 font-medium">
+          <li>Piscina de 8x4 metros con calefacción solar</li>
+          <li>Jacuzzi para 4 personas</li>
+          <li>Área de BBQ y zona social exterior</li>
+          <li>Baños y duchas exteriores</li>
+        </ul>
+      </div>
+      <div class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden">
+        <img src={Piscina.src} alt="Piscina de Senderos Amados" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </section>
+
   <section id="galeria" class="py-16 bg-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-4xl font-extrabold text-center text-green-800 mb-12">
         Galería de Senderos Amados
       </h2>
       <GalleryGrid images={galleryPlaceholders.map((img) => img.default.src)} />
+    </div>
+  </section>
+
+  <section id="ubicacion" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-extrabold text-center text-green-800 mb-12">
+        Ubicación
+      </h2>
+      
+      <div class="flex flex-col md:flex-row gap-8 mb-12 items-start max-w-4xl mx-auto">
+        <div class="relative h-64 md:h-80 max-w-md mx-auto rounded-lg overflow-hidden shadow-lg order-first md:order-first">
+          <img 
+            src={Ubicacion.src} 
+            alt="Ubicación de Senderos Amados en Boquete" 
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-linear-to-t from-black/30 to-transparent"></div>
+        </div>
+        
+        <div class="space-y-4 flex-1">
+          <h3 class="text-2xl font-bold text-green-700 mb-4">Encuéntranos en Boquete</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Senderos Amados está ubicado en el corazón de Boquete, Chiriquí, conocido por su clima perfecto, 
+            paisajes montañosos y ambiente tranquilo. A solo minutos del centro de Boquete y fácil acceso 
+            a las principales atracciones turísticas.
+          </p>
+          <div class="space-y-2">
+            <p class="flex items-center text-gray-700">
+              <span class="font-semibold mr-2">📍</span> Boquete, Chiriquí, Panamá
+            </p>
+            <p class="flex items-center text-gray-700">
+              <span class="font-semibold mr-2">🚗</span> A 10 minutos del centro de Boquete
+            </p>
+            <p class="flex items-center text-gray-700">
+              <span class="font-semibold mr-2">✈️</span> A 45 minutos del aeropuerto de David
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-gray-50 rounded-lg p-6 shadow-lg max-w-4xl mx-auto">
+        <h3 class="text-xl font-bold text-green-700 mb-4 text-center">Mapa Interactivo</h3>
+        <div class="relative w-full h-[500px] md:h-[600px] rounded-lg overflow-hidden shadow-md">
+          <iframe 
+            src="https://www.google.com/maps/d/embed?mid=1regUFIgR__f4Undq3VFWus4mIvM9WhE&ehbc=2E312F" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            class="rounded-lg"
+            title="Mapa interactivo de Senderos Amados en Boquete">
+          </iframe>
+        </div>
+      </div>
     </div>
   </section>
 
