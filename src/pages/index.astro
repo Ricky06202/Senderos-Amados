@@ -39,7 +39,7 @@ const features = [
 import mainImagePlaceholder from '@/assets/galeria/Boquete (17).jpg';
 import image1 from '@/assets/galeria/Boquete (1).jpg';
 import image2 from '@/assets/galeria/Boquete (2).jpg';
-const galleryImports = import.meta.glob('/src/assets/galeria/*.jpg', { eager: true });
+const galleryImports = import.meta.glob('/src/assets/galeria/*.*', { eager: true });
 const galleryPlaceholders = Object.values(galleryImports).map((img) => img) as { default: { src: string } }[];
 
 // Puedes copiar las imágenes de placeholder a la carpeta public/images para que funcionen,
