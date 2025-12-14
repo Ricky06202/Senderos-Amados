@@ -7,18 +7,106 @@
 
       <nav class="hidden md:block">
         <div class="ml-10 flex items-baseline space-x-4">
-          <a href="#acerca" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Acerca</a>
-          <a href="#servicios" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Comodidades</a>
-          <a href="#galeria" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Galería</a>
-          <a href="#contacto" class="bg-yellow-400 text-green-900 hover:bg-yellow-300 px-4 py-2 rounded-full text-sm font-bold transition duration-300">
+          <a
+            href="/#acerca"
+            class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium"
+            >Acerca</a
+          >
+          <a
+            href="/#servicios"
+            class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium"
+            >Comodidades</a
+          >
+          <a
+            href="/#ubicacion"
+            class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium"
+            >Ubicación</a
+          >
+          <a
+            href="/productos"
+            class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium"
+            >Productos</a
+          >
+          <a
+            href="/galeria"
+            class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium"
+            >Galería</a
+          >
+          <a
+            href="/#contacto"
+            class="bg-yellow-400 text-green-900 hover:bg-yellow-300 px-4 py-2 rounded-full text-sm font-bold transition duration-300"
+          >
             ¡Reserva Ahora!
           </a>
         </div>
       </nav>
 
-      <button class="md:hidden text-white hover:text-yellow-400">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      <button
+        id="mobile-menu-button"
+        class="md:hidden text-white hover:text-yellow-400 focus:outline-none"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path></svg
+        >
       </button>
     </div>
   </div>
+
+  <!-- Menú Móvil -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-green-900 px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-green-700 text-center"
+  >
+    <a
+      href="/#acerca"
+      class="block hover:bg-green-700 px-3 py-2 rounded-md text-base font-medium"
+      >Acerca</a
+    >
+    <a
+      href="/#servicios"
+      class="block hover:bg-green-700 px-3 py-2 rounded-md text-base font-medium"
+      >Comodidades</a
+    >
+    <a
+      href="/#ubicacion"
+      class="block hover:bg-green-700 px-3 py-2 rounded-md text-base font-medium"
+      >Ubicación</a
+    >
+    <a
+      href="/productos"
+      class="block hover:bg-green-700 px-3 py-2 rounded-md text-base font-medium"
+      >Productos</a
+    >
+    <a
+      href="/galeria"
+      class="block hover:bg-green-700 px-3 py-2 rounded-md text-base font-medium"
+      >Galería</a
+    >
+    <a
+      href="/#contacto"
+      class="block bg-yellow-400 text-green-900 hover:bg-yellow-300 px-3 py-2 rounded-md text-base font-bold transition duration-300 mt-4 text-center"
+    >
+      ¡Reserva Ahora!
+    </a>
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-button')
+  const menu = document.getElementById('mobile-menu')
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden')
+    })
+  }
+</script>

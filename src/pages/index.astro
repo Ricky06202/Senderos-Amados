@@ -1,129 +1,183 @@
 ---
 // src/pages/index.astro
-import BaseLayout from '../layouts/BaseLayout.astro';
-import FeatureCard from '../components/FeatureCard.astro'; // Crearemos este en el paso 4
-import GalleryGrid from '../components/GalleryGrid.astro'; // Crearemos este en el paso 4
-import Ubicacion from '../assets/Ubicacion.jpeg';
-import CasaPrincipal from '../assets/galeria/CasaPrincipal.png';
-import Apartamentos from '../assets/galeria/Apartamentos.png';
-import Piscina from '../assets/galeria/Piscina.png';
+import BaseLayout from '../layouts/BaseLayout.astro'
+import FeatureCard from '../components/FeatureCard.astro' // Crearemos este en el paso 4
+import Ubicacion from '../assets/Ubicacion.jpeg'
+import CasaPrincipal from '../assets/galeria/CasaPrincipal.png'
+import Apartamentos from '../assets/galeria/Apartamentos.png'
+import Piscina from '../assets/galeria/Piscina.png'
 
-const pageTitle = "Senderos Amados - Tu Refugio de Paz en Boquete";
-const pageDescription = "Relájate en una espectacular propiedad de casi una hectárea en el corazón de Boquete, a 3 minutos del Parque Central. ¡Reserva tu escapada mágica!";
+const pageTitle = 'Senderos Amados - Tu Refugio de Paz en Boquete'
+const pageDescription =
+  'Relájate en una espectacular propiedad de casi una hectárea en el corazón de Boquete, a 3 minutos del Parque Central. ¡Reserva tu escapada mágica!'
 
 // Datos de ejemplo para las tarjetas de características (puedes cambiarlos)
 const features = [
-  { 
-    title: "Propiedad de 9900 m²", 
-    description: "Casi una hectárea de terreno para que la familia corra libre y explore.",
-    icon: '🌳' 
+  {
+    title: 'Propiedad de 9900 m²',
+    description:
+      'Casi una hectárea de terreno para que la familia corra libre y explore.',
+    icon: '🌳',
   },
-  { 
-    title: "A 3 min del Centro", 
-    description: "Ubicación ideal: paz rural, pero a pasos del vibrante Parque Central de Boquete.",
-    icon: '📍' 
+  {
+    title: 'A 3 min del Centro',
+    description:
+      'Ubicación ideal: paz rural, pero a pasos del vibrante Parque Central de Boquete.',
+    icon: '📍',
   },
-  { 
-    title: "Jardín Extenso", 
-    description: "Rincones de relajación para leer, practicar yoga o simplemente respirar el aire fresco.",
-    icon: '🧘' 
+  {
+    title: 'Jardín Extenso',
+    description:
+      'Rincones de relajación para leer, practicar yoga o simplemente respirar el aire fresco.',
+    icon: '🧘',
   },
-  { 
-    title: "Ambiente de Finca", 
-    description: "Una experiencia auténtica, con gallinas paseando libremente, ideal para los pequeños.",
-    icon: '🐔' 
-  }
-];
-
+  {
+    title: 'Ambiente de Finca',
+    description:
+      'Una experiencia auténtica, con gallinas paseando libremente, ideal para los pequeños.',
+    icon: '🐔',
+  },
+]
 // URLs de placeholder para las imágenes
-import mainImagePlaceholder from '@/assets/galeria/Boquete (17).jpg';
-import image1 from '@/assets/galeria/Boquete (1).jpg';
-import image2 from '@/assets/galeria/Boquete (2).jpg';
-const galleryImports = import.meta.glob('/src/assets/galeria/*.*', { eager: true });
-const galleryPlaceholders = Object.values(galleryImports).map((img) => img) as { default: { src: string } }[];
-
+import mainImagePlaceholder from '@/assets/galeria/Boquete (17).jpg'
+import image1 from '@/assets/galeria/Boquete (1).jpg'
+import image2 from '@/assets/galeria/Boquete (2).jpg'
 // Puedes copiar las imágenes de placeholder a la carpeta public/images para que funcionen,
 // o simplemente reemplazarlas con tus propias fotos.
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  
-  <section class="relative h-[60vh] flex items-center justify-center text-white overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${mainImagePlaceholder.src}'); background-color: #333; background-position: center calc(50% + 500px);`}>
+  <section
+    class="relative h-[60vh] flex items-center justify-center text-white overflow-hidden"
+  >
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style={`background-image: url('${mainImagePlaceholder.src}'); background-color: #333; background-position: center calc(50% + 500px);`}
+    >
       <div class="absolute inset-0 bg-black opacity-40"></div>
     </div>
-    
+
     <div class="relative z-10 text-center px-4">
-      <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight shadow-text">
+      <h1
+        class="text-5xl md:text-7xl font-bold mb-4 tracking-tight shadow-text"
+      >
         Senderos Amados
       </h1>
       <p class="text-xl md:text-2xl font-light italic">
         Tu Refugio de Paz en Boquete
       </p>
-      <a href="#contacto" class="mt-8 inline-block bg-yellow-400 text-green-900 hover:bg-yellow-300 px-8 py-3 rounded-full text-lg font-bold transition duration-300 transform hover:scale-105 shadow-xl">
+      <a
+        href="#contacto"
+        class="mt-8 inline-block bg-yellow-400 text-green-900 hover:bg-yellow-300 px-8 py-3 rounded-full text-lg font-bold transition duration-300 transform hover:scale-105 shadow-xl"
+      >
         ¡Reserva tu Escapada Mágica!
       </a>
     </div>
   </section>
 
-  <section id="acerca" class="py-16 px-4 sm:px-6 lg:px-8"> 
+  <section id="acerca" class="py-16 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-4xl font-extrabold text-green-800 mb-6">
         Escapada Mágica en Senderos Amados
       </h2>
       <p class="text-lg text-gray-600 mb-4">
-        ¡Bienvenido a Senderos Amados, el lugar donde la naturaleza te invita a detener el tiempo! Imagina despertar con el suave canto de los pájaros y el aroma fresco de las montañas, enclavado en el corazón del pintoresco Boquete, pero en un santuario de paz que te hará olvidar el bullicio. Este no es solo un alojamiento, es una experiencia de inmersión total en la serenidad.
+        ¡Bienvenido a Senderos Amados, el lugar donde la naturaleza te invita a
+        detener el tiempo! Imagina despertar con el suave canto de los pájaros y
+        el aroma fresco de las montañas, enclavado en el corazón del pintoresco
+        Boquete, pero en un santuario de paz que te hará olvidar el bullicio.
+        Este no es solo un alojamiento, es una experiencia de inmersión total en
+        la serenidad.
       </p>
       <p class="text-xl font-semibold text-green-700">
-        Te espera una propiedad espectacular de casi una hectárea (9,900 m²) donde la tranquilidad no solo se respira, ¡se vive!
+        Te espera una propiedad espectacular de casi una hectárea (9,900 m²)
+        donde la tranquilidad no solo se respira, ¡se vive!
       </p>
     </div>
   </section>
 
-  <section id="servicios" class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-100"> 
+  <section id="servicios" class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-100">
     <div class="max-w-6xl mx-auto text-center">
       <h3 class="text-3xl font-bold text-green-800 mb-10">
         Nuestras Comodidades Clave y Ventajas
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        {features.map((feature) => (
-          <FeatureCard title={feature.title} description={feature.description} icon={feature.icon} />
-        ))}
+        {
+          features.map((feature) => (
+            <FeatureCard
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+            />
+          ))
+        }
       </div>
     </div>
   </section>
 
   <section class="py-16 bg-gray-100">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <div
+      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+    >
       <div class="space-y-4">
-        <h3 class="text-3xl font-bold text-green-700">Un Jardín sin Límites para tu Desconexión</h3>
+        <h3 class="text-3xl font-bold text-green-700">
+          Un Jardín sin Límites para tu Desconexión
+        </h3>
         <p class="text-gray-600">
-          La joya de la corona es nuestro inmenso y cuidado jardín de <strong class="font-bold">9,900 m²</strong>. Olvídate de los espacios reducidos; aquí, los niños pueden correr libres, puedes practicar yoga bajo el rocío de la mañana o simplemente caminar y respirar el clima fresco y revitalizante de Boquete.
+          La joya de la corona es nuestro inmenso y cuidado jardín de <strong
+            class="font-bold">9,900 m²</strong
+          >. Olvídate de los espacios reducidos; aquí, los niños pueden correr
+          libres, puedes practicar yoga bajo el rocío de la mañana o simplemente
+          caminar y respirar el clima fresco y revitalizante de Boquete.
         </p>
         <p class="text-gray-600 font-medium italic">
-          Encontrarás muchos lugares estratégicamente ubicados para sentarte, leer un libro, tomar un café o simplemente contemplar el paisaje montañoso.
+          Encontrarás muchos lugares estratégicamente ubicados para sentarte,
+          leer un libro, tomar un café o simplemente contemplar el paisaje
+          montañoso.
         </p>
       </div>
       <div class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden">
-        <img src={image1.src} alt="Jardín de Senderos Amados en Boquete" class="w-full h-full object-cover" />
+        <img
+          src={image1.src}
+          alt="Jardín de Senderos Amados en Boquete"
+          class="w-full h-full object-cover"
+        />
       </div>
     </div>
   </section>
 
   <section class="py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-      <div class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden order-last md:order-first">
-        <img src={image2.src} alt="Boquete Centro cerca de la Finca" class="w-full h-full object-cover" />
+    <div
+      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+    >
+      <div
+        class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden order-last md:order-first"
+      >
+        <img
+          src={image2.src}
+          alt="Boquete Centro cerca de la Finca"
+          class="w-full h-full object-cover"
+        />
       </div>
       <div class="space-y-4 order-first md:order-last">
-        <h3 class="text-3xl font-bold text-green-700">Ubicación Insuperable y Comodidad Total</h3>
+        <h3 class="text-3xl font-bold text-green-700">
+          Ubicación Insuperable y Comodidad Total
+        </h3>
         <p class="text-gray-600">
-          Lo increíble de esta finca es su perfecta dualidad: te sentirás en un retiro rural, pero estás a solo <strong class="font-bold">3 minutos caminando</strong> del vibrante Parque Central de Boquete.
+          Lo increíble de esta finca es su perfecta dualidad: te sentirás en un
+          retiro rural, pero estás a solo <strong class="font-bold"
+            >3 minutos caminando</strong
+          > del vibrante Parque Central de Boquete.
         </p>
         <ul class="list-disc list-inside text-gray-600 font-medium">
-          <li>Disfruta de la gastronomía y el ambiente festivo cuando quieras.</li>
+          <li>
+            Disfruta de la gastronomía y el ambiente festivo cuando quieras.
+          </li>
           <li>Regresa a la calma en un instante.</li>
-          <li>Contamos con <strong class="font-bold">amplio estacionamiento</strong> dentro de la propiedad, garantizando la seguridad de tu vehículo.</li>
+          <li>
+            Contamos con <strong class="font-bold"
+              >amplio estacionamiento</strong
+            > dentro de la propiedad, garantizando la seguridad de tu vehículo.
+          </li>
         </ul>
       </div>
     </div>
@@ -131,12 +185,16 @@ const galleryPlaceholders = Object.values(galleryImports).map((img) => img) as {
 
   <!-- Sección Casa Principal -->
   <section class="py-16 bg-gray-100">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <div
+      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+    >
       <div class="space-y-4">
         <h3 class="text-3xl font-bold text-green-700">Casa Principal</h3>
         <p class="text-gray-600">
-          La casa principal es el corazón de Senderos Amados, diseñada con arquitectura tradicional boqueteña y comodidades modernas. 
-          Con amplios espacios sociales, cocina totalmente equipada y vistas espectaculares al jardín.
+          La casa principal es el corazón de Senderos Amados, diseñada con
+          arquitectura tradicional boqueteña y comodidades modernas. Con amplios
+          espacios sociales, cocina totalmente equipada y vistas espectaculares
+          al jardín.
         </p>
         <ul class="list-disc list-inside text-gray-600 font-medium">
           <li>3 habitaciones cómodas con vistas al jardín</li>
@@ -146,22 +204,37 @@ const galleryPlaceholders = Object.values(galleryImports).map((img) => img) as {
         </ul>
       </div>
       <div class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden">
-        <img src={CasaPrincipal.src} alt="Casa Principal de Senderos Amados" class="w-full h-full object-cover" />
+        <img
+          src={CasaPrincipal.src}
+          alt="Casa Principal de Senderos Amados"
+          class="w-full h-full object-cover"
+        />
       </div>
     </div>
   </section>
 
   <!-- Sección Apartamentos/Casas de Alquiler -->
   <section class="py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-      <div class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden order-last md:order-first">
-        <img src={Apartamentos.src} alt="Apartamentos de Senderos Amados" class="w-full h-full object-cover" />
+    <div
+      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+    >
+      <div
+        class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden order-last md:order-first"
+      >
+        <img
+          src={Apartamentos.src}
+          alt="Apartamentos de Senderos Amados"
+          class="w-full h-full object-cover"
+        />
       </div>
       <div class="space-y-4 order-first md:order-last">
-        <h3 class="text-3xl font-bold text-green-700">Apartamentos Independientes</h3>
+        <h3 class="text-3xl font-bold text-green-700">
+          Apartamentos Independientes
+        </h3>
         <p class="text-gray-600">
-          Contamos con apartamentos totalmente independientes que ofrecen privacidad y comodidad. 
-          Cada uno está amueblado y equipado para una estancia prolongada con todas las comodidades.
+          Contamos con apartamentos totalmente independientes que ofrecen
+          privacidad y comodidad. Cada uno está amueblado y equipado para una
+          estancia prolongada con todas las comodidades.
         </p>
         <ul class="list-disc list-inside text-gray-600 font-medium">
           <li>2 apartamentos de 1 habitación</li>
@@ -175,12 +248,17 @@ const galleryPlaceholders = Object.values(galleryImports).map((img) => img) as {
 
   <!-- Sección Piscina -->
   <section class="py-16 bg-gray-100">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <div
+      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+    >
       <div class="space-y-4">
-        <h3 class="text-3xl font-bold text-green-700">Piscina y Zonas Húmedas</h3>
+        <h3 class="text-3xl font-bold text-green-700">
+          Piscina y Zonas Húmedas
+        </h3>
         <p class="text-gray-600">
-          Nuestra piscina es el lugar perfecto para relajarse después de un día de exploración. 
-          Diseñada para disfrutar del clima privilegiado de Boquete con áreas de sol y sombra.
+          Nuestra piscina es el lugar perfecto para relajarse después de un día
+          de exploración. Diseñada para disfrutar del clima privilegiado de
+          Boquete con áreas de sol y sombra.
         </p>
         <ul class="list-disc list-inside text-gray-600 font-medium">
           <li>Piscina de 8x4 metros con calefacción solar</li>
@@ -190,17 +268,12 @@ const galleryPlaceholders = Object.values(galleryImports).map((img) => img) as {
         </ul>
       </div>
       <div class="bg-gray-300 h-96 rounded-lg shadow-xl overflow-hidden">
-        <img src={Piscina.src} alt="Piscina de Senderos Amados" class="w-full h-full object-cover" />
+        <img
+          src={Piscina.src}
+          alt="Piscina de Senderos Amados"
+          class="w-full h-full object-cover"
+        />
       </div>
-    </div>
-  </section>
-
-  <section id="galeria" class="py-16 bg-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl font-extrabold text-center text-green-800 mb-12">
-        Galería de Senderos Amados
-      </h2>
-      <GalleryGrid images={galleryPlaceholders.map((img) => img.default.src)} />
     </div>
   </section>
 
@@ -209,52 +282,69 @@ const galleryPlaceholders = Object.values(galleryImports).map((img) => img) as {
       <h2 class="text-4xl font-extrabold text-center text-green-800 mb-12">
         Ubicación
       </h2>
-      
-      <div class="flex flex-col md:flex-row gap-8 mb-12 items-start max-w-4xl mx-auto">
-        <div class="relative h-64 md:h-80 max-w-md mx-auto rounded-lg overflow-hidden shadow-lg order-first md:order-first">
-          <img 
-            src={Ubicacion.src} 
-            alt="Ubicación de Senderos Amados en Boquete" 
+
+      <div
+        class="flex flex-col md:flex-row gap-8 mb-12 items-start max-w-4xl mx-auto"
+      >
+        <div
+          class="relative h-64 md:h-80 max-w-md mx-auto rounded-lg overflow-hidden shadow-lg order-first md:order-first"
+        >
+          <img
+            src={Ubicacion.src}
+            alt="Ubicación de Senderos Amados en Boquete"
             class="w-full h-full object-cover"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-linear-to-t from-black/30 to-transparent"></div>
+          <div
+            class="absolute inset-0 bg-linear-to-t from-black/30 to-transparent"
+          >
+          </div>
         </div>
-        
+
         <div class="space-y-4 flex-1">
-          <h3 class="text-2xl font-bold text-green-700 mb-4">Encuéntranos en Boquete</h3>
+          <h3 class="text-2xl font-bold text-green-700 mb-4">
+            Encuéntranos en Boquete
+          </h3>
           <p class="text-gray-700 leading-relaxed">
-            Senderos Amados está ubicado en el corazón de Boquete, Chiriquí, conocido por su clima perfecto, 
-            paisajes montañosos y ambiente tranquilo. A solo minutos del centro de Boquete y fácil acceso 
-            a las principales atracciones turísticas.
+            Senderos Amados está ubicado en el corazón de Boquete, Chiriquí,
+            conocido por su clima perfecto, paisajes montañosos y ambiente
+            tranquilo. A solo minutos del centro de Boquete y fácil acceso a las
+            principales atracciones turísticas.
           </p>
           <div class="space-y-2">
             <p class="flex items-center text-gray-700">
               <span class="font-semibold mr-2">📍</span> Boquete, Chiriquí, Panamá
             </p>
             <p class="flex items-center text-gray-700">
-              <span class="font-semibold mr-2">🚗</span> A 10 minutos del centro de Boquete
+              <span class="font-semibold mr-2">🚗</span> A 10 minutos del centro de
+              Boquete
             </p>
             <p class="flex items-center text-gray-700">
-              <span class="font-semibold mr-2">✈️</span> A 45 minutos del aeropuerto de David
+              <span class="font-semibold mr-2">✈️</span> A 45 minutos del aeropuerto
+              de David
             </p>
           </div>
         </div>
       </div>
-      
+
       <div class="bg-gray-50 rounded-lg p-6 shadow-lg max-w-4xl mx-auto">
-        <h3 class="text-xl font-bold text-green-700 mb-4 text-center">Mapa Interactivo</h3>
-        <div class="relative w-full h-[500px] md:h-[600px] rounded-lg overflow-hidden shadow-md">
-          <iframe 
-            src="https://www.google.com/maps/d/embed?mid=1regUFIgR__f4Undq3VFWus4mIvM9WhE&ehbc=2E312F" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
+        <h3 class="text-xl font-bold text-green-700 mb-4 text-center">
+          Mapa Interactivo
+        </h3>
+        <div
+          class="relative w-full h-[500px] md:h-[600px] rounded-lg overflow-hidden shadow-md"
+        >
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1regUFIgR__f4Undq3VFWus4mIvM9WhE&ehbc=2E312F"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             class="rounded-lg"
-            title="Mapa interactivo de Senderos Amados en Boquete">
+            title="Mapa interactivo de Senderos Amados en Boquete"
+          >
           </iframe>
         </div>
       </div>
@@ -266,11 +356,14 @@ const galleryPlaceholders = Object.values(galleryImports).map((img) => img) as {
       ¡Tu aventura de tranquilidad te espera!
     </h3>
     <p class="text-xl mb-8">
-      Ven a recargar energías, a disfrutar de la belleza escénica de Boquete y a vivir la magia de un lugar diseñado para tu paz.
+      Ven a recargar energías, a disfrutar de la belleza escénica de Boquete y a
+      vivir la magia de un lugar diseñado para tu paz.
     </p>
-    <a href="#contacto" class="inline-block bg-yellow-400 text-green-900 hover:bg-yellow-300 px-10 py-4 rounded-full text-xl font-bold transition duration-300 transform hover:scale-105 shadow-2xl">
+    <a
+      href="https://www.booking.com/hotel/pa/los-senderos-amados.html"
+      class="inline-block bg-yellow-400 text-green-900 hover:bg-yellow-300 px-10 py-4 rounded-full text-xl font-bold transition duration-300 transform hover:scale-105 shadow-2xl"
+    >
       Consultar Disponibilidad
     </a>
   </section>
-
 </BaseLayout>

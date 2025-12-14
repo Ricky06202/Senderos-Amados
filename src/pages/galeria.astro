@@ -1,0 +1,35 @@
+---
+// src/pages/galeria.astro
+import BaseLayout from '../layouts/BaseLayout.astro'
+import GalleryGrid from '../components/GalleryGrid.astro'
+
+const pageTitle = 'Galería de Senderos Amados'
+const pageDescription =
+  'Explora la belleza de nuestra finca, jardines y alojamientos en Boquete.'
+
+// Imports de la galería
+const galleryImports = import.meta.glob('/src/assets/galeria/*.*', {
+  eager: true,
+})
+const galleryPlaceholders = Object.values(galleryImports).map((img) => img) as {
+  default: { src: string }
+}[]
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="py-16 bg-white min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-green-800 mb-6">
+          Galería de Senderos Amados
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Un recorrido visual por los rincones de paz y naturaleza que te
+          esperan.
+        </p>
+      </div>
+
+      <GalleryGrid images={galleryPlaceholders.map((img) => img.default.src)} />
+    </div>
+  </section>
+</BaseLayout>

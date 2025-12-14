@@ -1,0 +1,105 @@
+---
+// src/pages/productos.astro
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ProductCard from '../components/ProductCard.astro'
+import image1 from '@/assets/galeria/Boquete (1).jpg'
+import CasaPrincipal from '../assets/galeria/CasaPrincipal.png'
+import Apartamentos from '../assets/galeria/Apartamentos.png'
+import EstacionTotal from '../assets/productos/miscelaneos/estacionTotal.jpeg'
+
+const pageTitle = 'Productos de Senderos Amados'
+const pageDescription =
+  'Descubre nuestros productos frescos de la finca y artesanías locales.'
+
+// Datos de ejemplo para los productos
+const products = [
+  {
+    title: 'Café de Altura',
+    description:
+      'Café arábica cultivado en nuestras propias tierras, con notas de chocolate y nuez.',
+    price: '$8.00 / oz',
+    image: image1,
+  },
+  {
+    title: 'Huevos de Campo',
+    description:
+      'Huevos frescos de gallinas felices criadas en libertad en nuestros jardines.',
+    price: '$5.00 / docena',
+    image: CasaPrincipal,
+  },
+  {
+    title: 'Hospedaje',
+    description:
+      'Disfruta de una estancia cómoda y tranquila en nuestras cabañas o apartamentos, rodeado de naturaleza.',
+    price: '$70.00 por noche c/u',
+    image: Apartamentos,
+  },
+]
+
+// Datos de ejemplo para segunda mano
+const secondHandProducts = [
+  {
+    title: 'Estacion Total',
+    description:
+      'Disfruta de una estancia cómoda y tranquila en nuestras cabañas o apartamentos, rodeado de naturaleza.',
+    price: '$2,500.00',
+    image: EstacionTotal,
+  },
+]
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="py-16 bg-white min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-green-800 mb-4">
+          Nuestros Productos
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Lleva a casa un pedazo de la experiencia Senderos Amados. Ofrecemos
+          productos frescos cultivados en nuestra finca y artesanías que apoyan
+          a la comunidad local.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-8 justify-center">
+        {
+          products.map((product) => (
+            <div class="w-full md:w-80">
+              <ProductCard
+                title={product.title}
+                description={product.description}
+                price={product.price}
+                image={product.image}
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-20 mb-12 border-t border-gray-200 pt-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-green-800 mb-4">
+          Ventas de Segunda Mano / Misceláneas
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Objetos únicos y oportunidades especiales que buscan un nuevo hogar.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-8 justify-center pb-16">
+        {
+          secondHandProducts.map((product) => (
+            <div class="w-full md:w-80">
+              <ProductCard
+                title={product.title}
+                description={product.description}
+                price={product.price}
+                image={product.image}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
