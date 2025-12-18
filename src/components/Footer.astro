@@ -1,12 +1,11 @@
 ---
 // src/components/Footer.astro
 const currentYear = new Date().getFullYear()
-import { Icon } from 'astro-icon/components'
 ---
 
 <footer id="contacto" class="bg-gray-800 text-white mt-12">
   <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center md:text-left">
       <div>
         <h4 class="text-lg font-semibold mb-3 text-yellow-400">Contáctanos</h4>
         <p class="text-gray-400">Bajo Boquete Centro, Chiriqui, Panamá</p>
@@ -21,41 +20,20 @@ import { Icon } from 'astro-icon/components'
         <ul>
           <li>
             <a href="#acerca" class="text-gray-400 hover:text-white"
-              >Acerca de la Finca</a>
+              >Acerca de la Finca</a
+            >
           </li>
           <li>
             <a href="#galeria" class="text-gray-400 hover:text-white"
-              >Ver Galería</a>
+              >Ver Galería</a
+            >
           </li>
           <li>
             <a href="#" class="text-gray-400 hover:text-white"
-              >Política de Privacidad</a>
+              >Política de Privacidad</a
+            >
           </li>
         </ul>
-      </div>
-
-      <div>
-        <h4 class="text-lg font-semibold mb-3 text-yellow-400">Síguenos</h4>
-        <div class="flex flex-col space-y-3 justify-center md:justify-start">
-          <a
-            href="https://www.instagram.com/senderosamados/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center space-x-3 text-gray-400 hover:text-white transition duration-300 justify-center md:justify-start"
-          >
-            <Icon name="mdi:instagram" class="w-6 h-6 shrink-0" />
-            <span>@senderosamados</span>
-          </a>
-          <a
-            href="https://x.com/senderosamados"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center space-x-3 text-gray-400 hover:text-white transition duration-300 justify-center md:justify-start"
-          >
-            <Icon name="simple-icons:x" class="w-6 h-6 shrink-0" />
-            <span>@senderosamados</span>
-          </a>
-        </div>
       </div>
     </div>
 
