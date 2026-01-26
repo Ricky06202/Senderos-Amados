@@ -1,8 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/Senderos Amados.png';
+---
+
 <header class="bg-green-800 text-white shadow-lg sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <a href="/" class="text-3xl font-serif font-bold tracking-wider">
-        Senderos Amados
+      <a href="/" class="flex items-center gap-2">
+        <Image src={logo} alt="Senderos Amados Logo" class="h-12 w-auto" />
+        <span class="text-2xl font-serif font-bold tracking-wider hidden sm:block">
+          Senderos Amados
+        </span>
       </a>
 
       <nav class="hidden md:block">
@@ -66,6 +74,9 @@
     id="mobile-menu"
     class="hidden md:hidden bg-green-900 px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-green-700 text-center"
   >
+    <div class="flex justify-center py-4">
+      <Image src={logo} alt="Senderos Amados Logo" class="h-16 w-auto" />
+    </div>
     <a
       href="/#acerca"
       class="block hover:bg-green-700 px-3 py-2 rounded-md text-base font-medium"
