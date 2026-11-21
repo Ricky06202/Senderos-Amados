@@ -2,6 +2,7 @@
 // src/layouts/BaseLayout.astro
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 import "../styles/global.css"; // Asegúrate de que esta ruta sea correcta para tu setup de Tailwind
 import logo from "../assets/Senderos Amados.png";
 
@@ -11,6 +12,21 @@ export interface Props {
 }
 
 const { title, description } = Astro.props;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: "Senderos Amados",
+  description,
+  telephone: "+507 6671-4646",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Bajo Boquete Centro",
+    addressLocality: "Boquete",
+    addressRegion: "Chiriquí",
+    addressCountry: "PA",
+  },
+  areaServed: "Boquete, Chiriquí, Panamá",
+};
 ---
 
 <!doctype html>
@@ -18,9 +34,23 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#166534" />
     <link rel="icon" type="image/png" href={logo.src} />
     <meta name="generator" content={Astro.generator} />
+    <meta property="og:site_name" content="Senderos Amados" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_PA" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col bg-gray-50 text-gray-800">
@@ -31,5 +61,6 @@ const { title, description } = Astro.props;
     </main>
 
     <Footer />
+    <WhatsAppButton />
   </body>
 </html>
